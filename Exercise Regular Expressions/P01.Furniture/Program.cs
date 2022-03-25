@@ -6,8 +6,7 @@ namespace P01.Furniture
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-           //TEST
+            string pattern = @">>(?<furnitureType>[A-Za-z]+)<<(?<price>\d+(.\d.?))!(?<quantity>\d+\b)";
         }
     }
 }
