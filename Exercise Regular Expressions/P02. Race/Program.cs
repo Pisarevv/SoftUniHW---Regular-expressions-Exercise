@@ -19,19 +19,30 @@ namespace P02._Race
 
             while((input = Console.ReadLine()) != "end of race")
             {
-                Match participtian = Regex.Match(input, patternName);
-                Match distance = Regex.Match(input, patternDistance);
-                if (participtian.Success && distance.Success)
-                {
-                    string name = participtian.Groups["name"].Value;
-                    string distanceTraveled = distance.Groups["distance"].Value;
+                MatchCollection participtian = Regex.Matches(input, patternName);
+                MatchCollection distance = Regex.Matches(input, patternDistance);
 
-                    if (participants.ContainsKey(name))
+                    string name = new string(string.Join("", participtian));
+                    string distanceTraveled = new string(string.Join("", distance));
+                char[] ch = distanceTraveled.ToCharArray();
+                    int distanceRan = 0;
+                    for (int i = 0; i < ch.Length; i++)
                     {
-                        participants[participtian.Value]
+                        distanceRan += ch[i]-48;
                     }
-                }
+
+                    if (!participants.ContainsKey(name))
+                    {
+                        participants[name] = 0;
+                    }
+                    else
+                    {
+                        participants[name] += distanceRan;
+                    }
+                
             }
+
+            var ordered = participants.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
         }
     }
