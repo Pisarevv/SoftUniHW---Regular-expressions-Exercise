@@ -10,11 +10,16 @@ namespace P02._Race
         static void Main(string[] args)
         {
             Dictionary<string,int> participants = new Dictionary<string,int>();
-
+            List<string> winners = new List<string>();
             string patternName = @"(?<name>[A-Za-z]+)";
             string patternDistance = @"(?<distance>\d+)";
 
-            string participtians = Console.ReadLine();
+            string[] inputParticiptians = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < inputParticiptians.Length; i++)
+            {
+                participants[inputParticiptians[i]] = 0;
+            }
+            
             string input = string.Empty;
 
             while((input = Console.ReadLine()) != "end of race")
@@ -24,25 +29,34 @@ namespace P02._Race
 
                     string name = new string(string.Join("", participtian));
                     string distanceTraveled = new string(string.Join("", distance));
-                char[] ch = distanceTraveled.ToCharArray();
+                    char[] ch = distanceTraveled.ToCharArray();
                     int distanceRan = 0;
                     for (int i = 0; i < ch.Length; i++)
                     {
                         distanceRan += ch[i]-48;
                     }
 
-                    if (!participants.ContainsKey(name))
+                    if (participants.ContainsKey(name))
                     {
-                        participants[name] = 0;
-                    }
-                    else
-                    {
-                        participants[name] += distanceRan;
-                    }
+                    participants[name] += distanceRan;
+                    }                                     
+                    
+                    
                 
             }
 
             var ordered = participants.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+            winners = ordered.Select(x => x.Key).ToList();
+            winners.Reverse();
+
+
+            
+
+            Console.WriteLine($"1st place: {winners[0]}");
+            Console.WriteLine($"2nd place: {winners[1]}");
+            Console.WriteLine($"3rd place: {winners[2]}");
+
 
         }
     }
