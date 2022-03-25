@@ -8,7 +8,7 @@ namespace P01.Furniture
     {
         static void Main(string[] args)
         {
-            string pattern = @">>(?<furnitureType>[A-Za-z]+)<<(?<price>\d+(.\d.?))!(?<quantity>\d+\b)";
+            string pattern = @">>(?<furnitureType>[A-Za-z]+)<<(?<price>\d+(.\d+)?)!(?<quantity>\d+)";
 
             string input = string.Empty;
             decimal finalPrice = 0m;
