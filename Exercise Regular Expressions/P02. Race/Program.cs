@@ -45,17 +45,22 @@ namespace P02._Race
                 
             }
 
-            var ordered = participants.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            //var ordered = participants.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-            winners = ordered.Select(x => x.Key).ToList();
-            winners.Reverse();
+            //winners = ordered.Select(x => x.Key).ToList();
+            //winners.Reverse();
 
 
-            
 
-            Console.WriteLine($"1st place: {winners[0]}");
-            Console.WriteLine($"2nd place: {winners[1]}");
-            Console.WriteLine($"3rd place: {winners[2]}");
+
+            //Console.WriteLine($"1st place: {winners[0]}");
+            //Console.WriteLine($"2nd place: {winners[1]}");
+            //Console.WriteLine($"3rd place: {winners[2]}");
+            participants = participants.OrderByDescending(kvp => kvp.Value).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            Console.WriteLine($"1st place: {participants.Keys.ElementAt(0)}");
+            Console.WriteLine($"2nd place: {participants.Keys.ElementAt(1)}");
+            Console.WriteLine($"3rd place: {participants.Keys.ElementAt(2)}");
 
 
         }
