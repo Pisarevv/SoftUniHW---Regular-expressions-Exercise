@@ -10,8 +10,18 @@ namespace P04.Star_Enigma
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
-               string encryptedMassage = Console.ReadLine();
-               string decryptedMassage = DecryptingMassage(encryptedMassage);
+                string encryptedMassage = Console.ReadLine();
+                string decryptedMassage = DecryptingMassage(encryptedMassage);
+                string pattern = @"\@(?<planet>[A-Za-z]+).?\:(?<population>\d+).?\!(?<attackType>\w{1}).?\-\>(?<soldierCount>\d+)";
+
+                Match match = Regex.Match(decryptedMassage, pattern);
+               
+                    string planetName = match.Groups["planet"].Value;
+                    string population = match.Groups["population"].Value;
+                    string attackType = match.Groups["attackType"].Value;
+                    string soldierCount = match.Groups["soldierCount"].Value;
+               
+
             }
             
         }
@@ -34,7 +44,7 @@ namespace P04.Star_Enigma
             }
 
 
-            return encryptedMassage;
+            return decryptedMassage;
 
         }
     }
