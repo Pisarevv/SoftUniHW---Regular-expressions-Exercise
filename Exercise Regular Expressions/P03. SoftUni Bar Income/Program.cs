@@ -8,7 +8,7 @@ namespace P03._SoftUni_Bar_Income
         static void Main(string[] args)
         {
             
-            string pattern = @"(?<name>\%[A-Z]{1}[a-z]+)\%(([^\|\$\%\.]+)*?)<(?<product>[A-Za-z]+)>([^\|\$\%\.]+)*?\|(?<quantity>\d+)\|([^\|\$\%\.]+)*?(?<price>\d+(\.\d)*?)\$";
+            string pattern = @"\%(?<name>[A-Z]{1}[a-z]+)\%(([^\|\$\%\.]+)*?)<(?<product>[A-Za-z]+)>([^\|\$\%\.]+)*?\|(?<quantity>\d+)\|([^\|\$\%\.]+)*?(?<price>\d+(\.\d+)*?)\$";
             decimal finalPrice = 0;
 
             string input = string.Empty;
