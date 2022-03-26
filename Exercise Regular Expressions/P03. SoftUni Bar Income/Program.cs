@@ -7,9 +7,9 @@ namespace P03._SoftUni_Bar_Income
     {
         static void Main(string[] args)
         {
-            
-            string pattern = @"\%(?<name>[A-Z]{1}[a-z]+)\%[^\%$|.]*?<(?<product>[A-Za-z]+)>[^\%$|.]*?\|(?<quantity>\d+)\|[^\%$|.]*?(?<price>\d+(\.\d+)?)\$";
-            decimal finalPrice = 0;
+
+            string pattern = @"\%(?<name>[A-Z]{1}[a-z]+)\%[^\%$|.]*?\<(?<product>\w+)\>[^\%$|.]*?\|(?<count>\d+)\|[^\%$|.]*?(?<price>\d+(\.\d+)?)\$";
+            decimal finalPrice = 0m;
 
             string input = string.Empty;
 
@@ -20,10 +20,11 @@ namespace P03._SoftUni_Bar_Income
                 {
                     string customerName = match.Groups["name"].Value;
                     string product = match.Groups["product"].Value;
-                    int quantity = int.Parse(match.Groups["quantity"].Value);
+                    int quantity = int.Parse(match.Groups["count"].Value);
                     decimal price = decimal.Parse(match.Groups["price"].Value);
-                    finalPrice += quantity * price;
-                    Console.WriteLine($"{customerName}: {product} - {price*quantity:F2}");
+                    decimal currentSpend = price * quantity;
+                    finalPrice += currentSpend;
+                    Console.WriteLine($"{customerName}: {product} - {currentSpend:F2}");
                 }
             }
             Console.WriteLine($"Total income: {finalPrice:F2}");
