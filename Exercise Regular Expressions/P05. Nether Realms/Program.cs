@@ -10,10 +10,10 @@ namespace P05._Nether_Realms
         static void Main(string[] args)
         {
             List<Demon> demons = new List<Demon>();
-            string namePattern = @"(?<name>[A-Za-z]+)";
-            string operatorPattern = @"(?<operators>[\*\\])";
+            string namePatternForHealth = @"(?<name>[A-Za-z]+)";
+            string operatorPattern = @"(?<operators>[\*\/])";
             string damagePattern = @"(?<digits>(\-|\+)*?\d+(\.\d+)*)";
-            string[] demonInput = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries);
+            string[] demonInput = Console.ReadLine().Split(",",StringSplitOptions.RemoveEmptyEntries);
             
 
             
@@ -25,7 +25,8 @@ namespace P05._Nether_Realms
                 double health = 0;
                 double damagePoints = 0;
                 double finalDamagePoints = 0;
-                MatchCollection matches = Regex.Matches(currentDeamon, namePattern);
+
+                MatchCollection matches = Regex.Matches(currentDeamon, namePatternForHealth);
 
                 foreach (Match match in matches)
                 {
@@ -59,24 +60,23 @@ namespace P05._Nether_Realms
                     }
                     
                 }
-                //for (int l = 0; l < operatorMatches.Count; l++)
-                //{
-                    foreach (Match matchOperator in operatorMatches)
+                
+                  foreach (Match matchOperator in operatorMatches)
                     {
                         string currentOperator = matchOperator.Value;
 
                         if (currentOperator == "*")
                         {
-                            finalDamagePoints += damagePoints * 2;
+                            damagePoints = damagePoints * 2;
                         }
                         else if (currentOperator == "/")
                         {
-                            finalDamagePoints += damagePoints / 2;
+                             damagePoints = damagePoints / 2;
                         }
                     }
-               // }
 
-                Demon newDemon = new Demon(demonName, health, finalDamagePoints);
+               
+                Demon newDemon = new Demon(currentDeamon, health, damagePoints);
                 demons.Add(newDemon);
 
 
@@ -85,7 +85,7 @@ namespace P05._Nether_Realms
             List<Demon> sortedDemons =  demons.OrderBy(x => x.Name).ToList();
             foreach (var demon in sortedDemons)
             {
-                Console.WriteLine($"{demon.Name} - {demon.Health} health, {demon.DamagePoints:F2} damage");
+                Console.WriteLine($"{demon.Name} - {demon.Health} health, {demon.DamagePoints:F2} damage ");
             }
 
            
