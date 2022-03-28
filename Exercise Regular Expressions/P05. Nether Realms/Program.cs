@@ -10,21 +10,28 @@ namespace P05._Nether_Realms
         static void Main(string[] args)
         {
             List<Demon> demons = new List<Demon>();
-            string namePatternForHealth = @"(?<name>[A-Za-z]+)";
+            string namePatternForHealth = @"([^0-9\+\-\*\/\.\ \,])";
             string operatorPattern = @"(?<operators>[\*\/])";
-            string damagePattern = @"(?<digits>(\-|\+)*?\d+(\.\d+)*)";
-            string[] demonInput = Console.ReadLine().Split(",",StringSplitOptions.RemoveEmptyEntries);
+            string damagePattern = @"(?<digits>(\-|\+|)*?\d+(\.\d+)*)";
+            string[] demonInput = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries);
             
 
             
 
             for (int i = 0; i < demonInput.Length; i++)
             {
-                string currentDeamon = demonInput[i];
+                string currentDeamon = demonInput[i].Trim();
+                if (currentDeamon.Contains(','))
+                {
+                    int indexOfSplitter = currentDeamon.IndexOf(',');
+                    currentDeamon = currentDeamon.Remove(indexOfSplitter);
+                   
+
+                }
                 string demonName = string.Empty;
                 double health = 0;
                 double damagePoints = 0;
-                double finalDamagePoints = 0;
+
 
                 MatchCollection matches = Regex.Matches(currentDeamon, namePatternForHealth);
 
