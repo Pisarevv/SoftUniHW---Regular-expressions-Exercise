@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03. SoftUni Bar Income", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04.Star Enigma", "P04.Star Enigma\P04.Star Enigma.csproj", "{656BEFD9-8B54-4D08-8284-A1CC507C6105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05. Nether Realms", "P05. Nether Realms\P05. Nether Realms.csproj", "{C5755F18-D76E-405C-AFD5-757CCDF890D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05. Nether Realms", "P05. Nether Realms\P05. Nether Realms.csproj", "{C5755F18-D76E-405C-AFD5-757CCDF890D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06.Extract Emails", "P06.Extract Emails\P06.Extract Emails.csproj", "{48711D04-2DA8-45CC-9273-A988D180D1F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C5755F18-D76E-405C-AFD5-757CCDF890D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5755F18-D76E-405C-AFD5-757CCDF890D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5755F18-D76E-405C-AFD5-757CCDF890D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48711D04-2DA8-45CC-9273-A988D180D1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48711D04-2DA8-45CC-9273-A988D180D1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48711D04-2DA8-45CC-9273-A988D180D1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48711D04-2DA8-45CC-9273-A988D180D1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
