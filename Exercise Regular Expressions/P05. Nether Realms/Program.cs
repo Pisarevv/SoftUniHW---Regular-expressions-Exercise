@@ -13,7 +13,7 @@ namespace P05._Nether_Realms
             string namePatternForHealth = @"([^0-9\+\-\*\/\.\ \,])";
             string operatorPattern = @"(?<operators>[\*\/])";
             string damagePattern = @"(?<digits>(\-|\+|)*?\d+(\.\d+)*)";
-            string[] demonInput = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries);
+            string[] demonInput = Console.ReadLine().Split(",",StringSplitOptions.RemoveEmptyEntries);
             
 
             
